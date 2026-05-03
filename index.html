@@ -580,6 +580,40 @@ section{padding:64px 26px;}
   font-size:12px;letter-spacing:3px;color:var(--accent);opacity:.55;
 }
 
+/* LIGHTBOX GALERIA */
+#gal-lb{
+  position:fixed;inset:0;z-index:9500;
+  display:flex;align-items:center;justify-content:center;
+  visibility:hidden;opacity:0;
+  cursor:zoom-out;
+}
+#gal-lb-bg{
+  position:absolute;inset:0;
+  background:rgba(28,16,45,0.82);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+}
+#gal-lb-img{
+  position:relative;z-index:1;
+  max-width:88vw;max-height:82vh;
+  object-fit:contain;
+  border-radius:22px;
+  border:3px solid rgba(255,255,255,0.88);
+  box-shadow:0 28px 80px rgba(0,0,0,0.55),0 0 0 1px rgba(176,141,197,0.22);
+  transform-origin:center center;
+}
+#gal-lb-close{
+  position:absolute;top:22px;right:22px;z-index:2;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,0.14);
+  border:1.5px solid rgba(255,255,255,0.30);
+  color:#fff;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:background 0.2s;
+}
+#gal-lb-close:hover{background:rgba(255,255,255,0.26);}
+.wgal-card{cursor:zoom-in;}
+
 /* MESA DE REGALOS V2 — Centrada Ceremonial */
 .gift2-wrap{display:flex;flex-direction:column;gap:18px;align-items:center;}
 .gift2-card{
@@ -1352,6 +1386,13 @@ footer .fd{
 
 </div>
 
+<!-- LIGHTBOX GALERIA -->
+<div id="gal-lb">
+  <div id="gal-lb-bg"></div>
+  <img id="gal-lb-img" src="" alt="Foto galería">
+  <button id="gal-lb-close" aria-label="Cerrar">✕</button>
+</div>
+
 <!-- MUSICA -->
 <button class="music-fab" id="musicFab" aria-label="Reproducir musica">
   <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
@@ -1576,6 +1617,49 @@ function initWheelGallery(){
     });
   });
 }
+
+/* LIGHTBOX GALERIA */
+(function(){
+  var lb=document.getElementById('gal-lb');
+  var lbImg=document.getElementById('gal-lb-img');
+  var lbClose=document.getElementById('gal-lb-close');
+  var isOpen=false;
+
+  function openLb(src,originEl){
+    if(isOpen)return;
+    isOpen=true;
+    lbImg.src=src;
+    /* Posición de origen para la animación de expansión */
+    var r=originEl.getBoundingClientRect();
+    var ox=(r.left+r.right)/2-window.innerWidth/2;   /* offset X del centro */
+    var oy=(r.top+r.bottom)/2-window.innerHeight/2;  /* offset Y del centro */
+    gsap.set(lb,{autoAlpha:0});
+    gsap.set(lbImg,{scale:0.15,x:ox,y:oy,opacity:0});
+    gsap.to(lb,{autoAlpha:1,duration:0.28,ease:'power2.out'});
+    gsap.to(lbImg,{scale:1,x:0,y:0,opacity:1,duration:0.48,ease:'back.out(1.3)'});
+  }
+
+  function closeLb(){
+    if(!isOpen)return;
+    isOpen=false;
+    gsap.to(lbImg,{scale:0.85,opacity:0,duration:0.22,ease:'power2.in'});
+    gsap.to(lb,{autoAlpha:0,duration:0.28,ease:'power2.in',onComplete:function(){
+      lbImg.src='';
+    }});
+  }
+
+  /* Asignar click a todas las tarjetas de la rueda */
+  document.querySelectorAll('.wgal-card').forEach(function(card){
+    card.addEventListener('click',function(e){
+      e.stopPropagation();
+      openLb(card.querySelector('img').src,card);
+    });
+  });
+
+  lb.addEventListener('click',closeLb);
+  lbClose.addEventListener('click',function(e){e.stopPropagation();closeLb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+})();
 
 /* MUSICA */
 var fab=document.getElementById('musicFab'),audio=document.getElementById('bgAudio');
