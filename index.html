@@ -230,54 +230,71 @@ section{padding:64px 26px;}
   font-size:15px;color:var(--dark);opacity:.6;letter-spacing:1px;line-height:1.6;
 }
 
-/* UBICACION V2 — Editorial Location Cards */
-.loc2-wrap{display:flex;flex-direction:column;gap:20px;}
-.loc2-card{
+/* UBICACION V3 — Single Venue Frame */
+.loc1-card{
   position:relative;overflow:hidden;
-  background:linear-gradient(145deg,rgba(255,255,255,0.82),rgba(251,245,255,0.94));
+  background:linear-gradient(158deg,rgba(255,255,255,0.88),rgba(251,245,255,0.97));
   backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  border-radius:26px;
-  border:1px solid rgba(176,141,197,0.14);
-  box-shadow:0 10px 44px rgba(139,107,163,0.09),inset 0 1px 0 rgba(255,255,255,0.92);
+  border-radius:28px;
+  border:1px solid rgba(176,141,197,0.16);
+  box-shadow:0 14px 56px rgba(139,107,163,0.10),inset 0 1px 0 rgba(255,255,255,0.96);
 }
-.loc2-card::before{
-  content:'';position:absolute;left:0;top:18%;bottom:18%;width:2.5px;
+.loc1-card::before{
+  content:'';position:absolute;left:0;top:12%;bottom:12%;width:2.5px;
   background:linear-gradient(to bottom,transparent,var(--accent) 30%,var(--champagne) 70%,transparent);
-  opacity:.45;
+  opacity:.42;
 }
-.loc2-badge{
-  width:54px;height:54px;border-radius:50%;margin:30px auto 0;
-  background:linear-gradient(135deg,rgba(176,141,197,0.13),rgba(176,141,197,0.24));
-  border:1.5px solid rgba(176,141,197,0.28);
+.loc1-top{padding:34px 28px 0;text-align:center;}
+.loc1-pin{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 16px;
+  background:linear-gradient(135deg,rgba(176,141,197,0.14),rgba(176,141,197,0.26));
+  border:1.5px solid rgba(176,141,197,0.30);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 18px rgba(139,107,163,0.11);
+  box-shadow:0 4px 20px rgba(139,107,163,0.13);
 }
-.loc2-badge svg{width:23px;height:23px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
-.loc2-body{padding:14px 28px 26px;text-align:center;}
-.loc2-type{
+.loc1-pin svg{width:22px;height:22px;fill:var(--accent);}
+.loc1-venue-name{
+  font-family:'Great Vibes',cursive;font-size:50px;
+  background:linear-gradient(135deg,var(--dark) 20%,var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1.1;margin-bottom:10px;
+}
+.loc1-addr{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:11px;letter-spacing:5px;text-transform:uppercase;
-  color:var(--accent);margin-bottom:4px;opacity:.8;
+  font-size:14px;color:rgba(58,45,80,.6);letter-spacing:.4px;line-height:1.75;
 }
-.loc2-name{
-  font-family:'Great Vibes',cursive;font-size:40px;
-  color:var(--dark);line-height:1.1;margin-bottom:10px;
+.loc1-hsep{
+  width:48px;height:1px;margin:20px auto 22px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.32;
 }
-.loc2-divider{
-  width:44px;height:1px;margin:0 auto 16px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  opacity:.38;
+.loc1-events{
+  display:grid;grid-template-columns:1fr 1px 1fr;
+  margin:0 22px 24px;
+  border:1px solid rgba(176,141,197,0.16);
+  border-radius:18px;background:rgba(253,242,248,0.45);
+  overflow:hidden;
 }
-.loc2-addr{
-  font-family:'Cormorant Garamond',serif;font-size:15px;
-  color:var(--text);line-height:1.75;letter-spacing:.3px;
+.loc1-event{padding:20px 16px;text-align:center;}
+.loc1-event-label{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--accent);opacity:.82;margin-bottom:6px;
 }
-.loc2-addr strong{font-weight:500;color:var(--dark);}
-.loc2-time{
-  font-family:'Cormorant Garamond',serif;font-size:30px;
-  color:var(--dark);letter-spacing:5px;margin:14px 0 18px;line-height:1;
+.loc1-event-title{
+  font-family:'Great Vibes',cursive;font-size:28px;
+  color:var(--dark);line-height:1.1;margin-bottom:9px;
 }
-.loc2-map{width:100%;height:195px;border:0;display:block;border-radius:0 0 24px 24px;opacity:.9;}
+.loc1-event-time{
+  font-family:'Cormorant Garamond',serif;font-size:24px;
+  color:var(--dark);letter-spacing:4px;line-height:1;
+}
+.loc1-vdiv{width:1px;background:linear-gradient(to bottom,transparent,rgba(176,141,197,0.28),transparent);}
+.loc1-cta{text-align:center;padding:0 22px 26px;}
+.loc1-map{
+  width:100%;height:215px;border:0;display:block;
+  border-radius:0 0 28px 28px;opacity:.92;
+  filter:saturate(0.85);
+}
 .btn{
   display:inline-block;margin-top:16px;padding:12px 30px;
   background:linear-gradient(135deg,#B08DC5,#8B6BA3);color:#FFFFFF;border-radius:30px;
@@ -911,50 +928,44 @@ footer .fd{
     </svg>
   </div>
 
-  <!-- UBICACION V2 -->
+  <!-- UBICACION V3 — Single Frame -->
   <section id="subic">
     <h2 class="sec-title rv">Ubicaci&oacute;n</h2>
-    <div class="loc2-wrap">
+    <div class="loc1-card rv">
 
-      <div class="loc2-card rv">
-        <div class="loc2-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor" stroke="none"/></svg>
+      <div class="loc1-top">
+        <div class="loc1-pin">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         </div>
-        <div class="loc2-body">
-          <div class="loc2-type">Misa de XV A&ntilde;os</div>
-          <div class="loc2-name">Ceremonia</div>
-          <div class="loc2-divider"></div>
-          <div class="loc2-addr">
-            <strong>Rinc&oacute;n Tapat&iacute;o</strong><br>
-            Calle Paseo de las Azucenas 50<br>
-            Jiutepec, Morelos
-          </div>
-          <div class="loc2-time">17:00 hrs</div>
-          <a class="btn" href="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX" target="_blank">C&oacute;mo Llegar</a>
-        </div>
-        <iframe class="loc2-map"
-          src="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX&output=embed&hl=es"
-          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <div class="loc1-venue-name">Rinc&oacute;n Tapat&iacute;o</div>
+        <div class="loc1-addr">Calle Paseo de las Azucenas 50<br>Jiutepec, Morelos</div>
+        <div class="loc1-hsep"></div>
       </div>
 
-      <div class="loc2-card rv">
-        <div class="loc2-badge" style="background:linear-gradient(135deg,rgba(139,176,214,0.13),rgba(139,176,214,0.24));border-color:rgba(139,176,214,0.28);">
-          <svg viewBox="0 0 24 24" style="stroke:#8BB0D6"><path d="M8 2l4 9 4-9M12 11v7M8 21h8"/></svg>
+      <div class="loc1-events">
+        <div class="loc1-event">
+          <div class="loc1-event-label">Misa de XV A&ntilde;os</div>
+          <div class="loc1-event-title">Ceremonia</div>
+          <div class="loc1-event-time">17:00</div>
         </div>
-        <div class="loc2-body">
-          <div class="loc2-type" style="color:var(--sky)">Cena y Fiesta</div>
-          <div class="loc2-name">Recepci&oacute;n</div>
-          <div class="loc2-divider" style="background:linear-gradient(90deg,transparent,var(--sky),transparent)"></div>
-          <div class="loc2-addr">
-            <strong>Rinc&oacute;n Tapat&iacute;o</strong><br>
-            Calle Paseo de las Azucenas 50<br>
-            Jiutepec, Morelos
-          </div>
-          <div class="loc2-time">18:00 hrs</div>
-          <a class="btn" style="background:linear-gradient(135deg,#8BB0D6,#6A96C2);" href="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX" target="_blank">C&oacute;mo Llegar</a>
+        <div class="loc1-vdiv"></div>
+        <div class="loc1-event">
+          <div class="loc1-event-label">Cena &amp; Fiesta</div>
+          <div class="loc1-event-title">Recepci&oacute;n</div>
+          <div class="loc1-event-time">18:00</div>
         </div>
       </div>
+
+      <div class="loc1-cta">
+        <a class="btn" href="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX" target="_blank">
+          C&oacute;mo Llegar
+        </a>
+      </div>
+
+      <iframe class="loc1-map"
+        src="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX&output=embed&hl=es"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
 
     </div>
   </section>
