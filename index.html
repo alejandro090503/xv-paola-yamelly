@@ -509,67 +509,64 @@ section{padding:64px 26px;}
 }
 .corte-star svg{width:16px;height:16px;}
 
-/* GALERIA V2 — Rueda de la Fortuna */
+/* GALERIA V3 — Rueda de la Fortuna COMPLETA */
 #sgal{padding:40px 0 50px;overflow:visible;}
 .wgal-scene{
-  position:relative;height:310px;overflow:hidden;margin:0 auto;
+  /* Radio 140px + foto 100×133px → alto necesario: 2×(140+67)=414 + margen */
+  position:relative;height:460px;overflow:hidden;margin:0 auto;
 }
-/* Fade inferior — las fotos "emergen" desde abajo */
-.wgal-scene::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:110px;
-  background:linear-gradient(to top,var(--bg) 15%,rgba(251,245,255,0.5) 60%,transparent);
-  pointer-events:none;z-index:5;
-}
-/* Aro decorativo */
+/* Aro decorativo — centrado en el pivot (50% de la escena) */
 .wgal-rim{
-  position:absolute;bottom:-50px;left:50%;
-  width:400px;height:400px;margin-left:-200px;
+  position:absolute;
+  top:calc(50% - 160px);left:calc(50% - 160px);
+  width:320px;height:320px;
   border-radius:50%;
-  border:1px solid rgba(176,141,197,0.11);
+  border:1px solid rgba(176,141,197,0.14);
   pointer-events:none;z-index:0;
 }
 .wgal-rim::before{
-  content:'';position:absolute;inset:18px;border-radius:50%;
-  border:1px dashed rgba(176,141,197,0.07);
+  content:'';position:absolute;inset:20px;border-radius:50%;
+  border:1px dashed rgba(176,141,197,0.08);
 }
 /* Hub central */
 .wgal-hub{
   position:absolute;
-  width:20px;height:20px;
-  bottom:-60px;left:50%;margin-left:-10px;
+  width:18px;height:18px;
+  top:calc(50% - 9px);left:calc(50% - 9px);
   border-radius:50%;
   background:linear-gradient(135deg,var(--accent),var(--champagne));
-  box-shadow:0 2px 12px rgba(139,107,163,0.32);
+  box-shadow:0 2px 14px rgba(139,107,163,0.38);
   z-index:6;
 }
-/* Rueda — div de rotación (width/height=0, es solo un pivot) */
+/* Rueda — pivot centrado en la escena */
 .wgal-wheel{
   position:absolute;
-  bottom:-50px;left:50%;
+  top:50%;left:50%;
   width:0;height:0;
 }
-/* Cada foto posicionada en el aro */
+/* Cada foto — radio 140px, foto 100×133px */
 .wgal-item{
   position:absolute;
-  width:120px;height:158px;
-  margin-left:-60px;   /* −half_width */
-  margin-top:-258px;   /* −(radius_180 + half_height_78) */
-  transform-origin:60px 258px; /* (half_w, radius+half_h) = pivot = wheel center */
+  width:100px;height:133px;
+  margin-left:-50px;    /* −half_width */
+  margin-top:-207px;    /* −(radius_140 + half_height_67) */
+  transform-origin:50px 207px; /* (half_w, radius+half_h) */
   transform:rotate(calc(var(--i) * 60deg));
 }
-/* Rayo desde foto hasta centro */
+/* Rayo desde foto hasta hub */
 .wgal-spoke{
   position:absolute;
-  top:158px;left:50%; /* desde borde inferior de la foto */
-  width:1.5px;height:100px; /* 258-158 = 100px hasta pivot */
-  background:linear-gradient(to bottom,rgba(176,141,197,0.20),transparent);
+  top:133px;left:50%;
+  width:1.5px;height:74px; /* 207-133=74px al pivot */
+  background:linear-gradient(to bottom,rgba(176,141,197,0.22),transparent);
   transform:translateX(-50%);
 }
 /* Tarjeta de foto */
 .wgal-card{
-  position:absolute;inset:0 0 0 0;height:158px;
-  border-radius:16px;overflow:hidden;
-  border:2.5px solid rgba(255,255,255,0.88);
+  position:absolute;
+  width:100px;height:133px;
+  border-radius:14px;overflow:hidden;
+  border:2.5px solid rgba(255,255,255,0.90);
   box-shadow:0 8px 28px rgba(139,107,163,0.17),0 2px 6px rgba(0,0,0,0.07);
   background:rgba(251,245,255,0.5);
 }
@@ -578,7 +575,7 @@ section{padding:64px 26px;}
 }
 /* Scroll hint */
 .wgal-hint{
-  text-align:center;margin-top:18px;
+  text-align:center;margin-top:14px;
   font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:12px;letter-spacing:3px;color:var(--accent);opacity:.55;
 }
@@ -1548,33 +1545,34 @@ function initWheelGallery(){
     gsap.fromTo('.wgal-hint',{opacity:0,y:10},{opacity:1,y:0,duration:1.2,delay:0.8,ease:'power2.out'});
   }});
 
-  /* Rotación vinculada al scroll — 300° = 5 posiciones en 6 fotos */
+  /* Rotación vinculada al scroll — 360° = vuelta completa */
   gsap.to(wheel,{
-    rotation:300,
+    rotation:360,
     ease:'none',
     scrollTrigger:{
       trigger:'#sgal',
       start:'top 70%',
       end:'bottom top',
-      scrub:2.5        /* suavidad del arrastre */
+      scrub:2        /* suavidad del arrastre */
     }
   });
 
-  /* Sombra dinámica: la foto al centro (12 en punto) brilla más */
-  /* Se actualiza en el ticker para que coincida con la rotación actual */
+  /* Sombra dinámica: la foto más cercana a las 12 brilla más */
   gsap.ticker.add(function(){
     var rot=gsap.getProperty(wheel,'rotation')||0;
-    var norm=((rot%360)+360)%360; /* normalizar a 0-360 */
+    var norm=((rot%360)+360)%360;
     document.querySelectorAll('.wgal-item').forEach(function(item,i){
-      var itemAngle=((i*60+norm)%360+360)%360;
-      /* Ángulo respecto al centro (12 en punto = 0°) */
-      var dist=Math.min(itemAngle,360-itemAngle); /* 0 = top, 180 = bottom */
-      var scale=dist<90?gsap.utils.mapRange(0,90,1.05,1,dist):1;
-      var shadow=dist<90?
-        '0 12px 36px rgba(139,107,163,0.28)':
-        '0 6px 20px rgba(139,107,163,0.14)';
-      item.querySelector('.wgal-card').style.boxShadow=shadow;
-      item.querySelector('.wgal-card').style.transform='scale('+scale+')';
+      /* ángulo absoluto del item en el espacio (0=arriba, crece CW) */
+      var itemAngle=((i*60-norm)%360+360)%360;
+      /* distancia angular al punto de las 12 */
+      var dist=Math.min(itemAngle,360-itemAngle);
+      var scale=dist<50?gsap.utils.mapRange(0,50,1.08,1,dist):1;
+      var shadow=dist<60?
+        '0 14px 38px rgba(139,107,163,0.32)':
+        '0 5px 18px rgba(139,107,163,0.12)';
+      var card=item.querySelector('.wgal-card');
+      card.style.boxShadow=shadow;
+      card.style.transform='scale('+scale+')';
     });
   });
 }
