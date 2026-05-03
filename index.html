@@ -705,14 +705,42 @@ section{padding:64px 26px;}
 }
 .rsvp-card input::placeholder,.rsvp-card textarea::placeholder{color:rgba(58,45,80,.35);}
 .rsvp-card input:focus,.rsvp-card select:focus,.rsvp-card textarea:focus{border-color:var(--accent);}
-.btn-wa{
+.btn-rsvp{
   display:flex;align-items:center;justify-content:center;gap:10px;
   width:100%;margin-top:20px;padding:15px;min-height:48px;
-  background:#25D366;color:#fff;border-radius:30px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--dark));
+  color:#fff;border-radius:30px;border:none;cursor:pointer;
   font-family:'Cormorant Garamond',serif;font-size:12px;text-transform:uppercase;letter-spacing:3px;
-  transition:background .3s,transform .3s;
+  transition:opacity .3s,transform .3s;
+  box-shadow:0 4px 22px rgba(139,107,163,0.28);
 }
-.btn-wa:hover{background:#1da851;transform:translateY(-2px);}
+.btn-rsvp:hover{opacity:0.88;transform:translateY(-2px);}
+.btn-rsvp:disabled{opacity:0.52;cursor:not-allowed;transform:none;}
+.rsvp-passes-badge{
+  display:block;width:fit-content;margin:0 auto 22px;
+  background:linear-gradient(135deg,var(--accent),var(--dark));
+  color:#fff;border-radius:30px;padding:5px 20px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;letter-spacing:2px;text-align:center;
+}
+.rsvp-name-row{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.rsvp-name-row:last-child{margin-bottom:0;}
+.rsvp-name-num{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--champagne));
+  color:#fff;font-size:12px;font-family:'Cormorant Garamond',serif;
+  display:flex;align-items:center;justify-content:center;
+}
+.rsvp-name-row input{flex:1;}
+.rsvp-success{
+  visibility:hidden;opacity:0;text-align:center;padding:18px 0 6px;
+}
+.rsvp-error{
+  min-height:18px;font-family:'Lato',sans-serif;font-size:12px;
+  color:#c0576a;text-align:center;margin-top:10px;
+}
 
 /* FOOTER */
 footer{padding:50px 20px;text-align:center;}
@@ -1360,21 +1388,21 @@ footer .fd{
     <h2 class="sec-title">R.S.V.P.</h2>
     <div class="rsvp-card">
       <div class="rsvp-deadline">Fecha l&iacute;mite: 15 de Mayo de 2026</div>
-      <label>Tu nombre completo</label>
-      <input type="text" id="rName" placeholder="Nombre" autocomplete="name">
-      <label>&iquest;Asistir&aacute;s?</label>
-      <select id="rAssist">
-        <option>S&iacute;, con mucho gusto asistir&eacute;</option>
-        <option>Lamento no poder asistir</option>
-      </select>
-      <label>N&uacute;mero de invitados</label>
-      <input type="number" id="rGuests" min="1" max="6" value="1" inputmode="numeric">
-      <label>Un mensaje para Paola</label>
-      <textarea id="rMsg" rows="3" placeholder="Escribe tus deseos..."></textarea>
-      <button class="btn-wa" id="rsvpBtn" aria-label="Confirmar por WhatsApp">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></svg>
-        Confirmar por WhatsApp
+      <div class="rsvp-passes-badge" id="rsvpBadge">1 Pase</div>
+      <div id="rsvpNamesWrap"></div>
+      <button class="btn-rsvp" id="rsvpSubmitBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Confirmar Asistencia
       </button>
+      <div class="rsvp-error" id="rsvpError"></div>
+      <div class="rsvp-success" id="rsvpSuccess">
+        <svg width="54" height="54" viewBox="0 0 54 54" fill="none" style="margin:0 auto;display:block;">
+          <circle cx="27" cy="27" r="25.5" stroke="#B08DC5" stroke-width="1.5" opacity="0.38"/>
+          <path d="M15 27l9 9 15-17" stroke="#B08DC5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div style="font-family:'Great Vibes',cursive;font-size:40px;background:linear-gradient(135deg,#B08DC5,#D4B8E4,#8B6BA3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:10px 0 8px;">¡Gracias!</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(58,45,80,.68);line-height:1.65;margin:0;">Tu asistencia ha sido confirmada.<br>¡Nos vemos en los XV de Paola!</p>
+      </div>
     </div>
   </section>
 
@@ -1565,15 +1593,97 @@ function copyAccount(){
   });
 }
 
-/* RSVP WHATSAPP */
-document.getElementById('rsvpBtn').addEventListener('click',function(){
-  var n=document.getElementById('rName').value.trim()||'Invitado/a';
-  var a=document.getElementById('rAssist').value;
-  var g=document.getElementById('rGuests').value||'1';
-  var m=document.getElementById('rMsg').value.trim();
-  var t='Hola! Soy '+n+'.\n'+a+'.\nInvitados: '+g+(m?'\nMensaje: '+m:'');
-  window.open('https://wa.me/527772199125?text='+encodeURIComponent(t),'_blank');
-});
+/* RSVP — SUPABASE */
+(function(){
+  var SB_URL='https://bsjoelxktbvlavfoozhk.supabase.co';
+  var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzam9lbHhrdGJ2bGF2Zm9vemhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2NDYwNTIsImV4cCI6MjA5MzIyMjA1Mn0.jZlKZuH-KXlBLl5njadkKPmOemrj9cdm92nVZxBjFHI';
+
+  var params=new URLSearchParams(window.location.search);
+  var pases=Math.min(5,Math.max(1,parseInt(params.get('pases')||'1',10)));
+
+  /* Badge */
+  var badge=document.getElementById('rsvpBadge');
+  badge.textContent=pases+(pases===1?' Pase':' Pases');
+
+  /* Render N name inputs */
+  var wrap=document.getElementById('rsvpNamesWrap');
+  for(var i=1;i<=pases;i++){
+    var row=document.createElement('div');
+    row.className='rsvp-name-row';
+    var num=document.createElement('div');
+    num.className='rsvp-name-num';
+    num.textContent=i;
+    var inp=document.createElement('input');
+    inp.type='text';
+    inp.id='rsvpN'+i;
+    inp.placeholder=pases>1?'Nombre #'+i:'Nombre completo';
+    inp.autocomplete='off';
+    row.appendChild(num);
+    row.appendChild(inp);
+    wrap.appendChild(row);
+  }
+
+  /* Submit */
+  var submitBtn=document.getElementById('rsvpSubmitBtn');
+  submitBtn.addEventListener('click',function(){
+    var nombres=[];
+    var missing=-1;
+    for(var j=1;j<=pases;j++){
+      var v=document.getElementById('rsvpN'+j).value.trim();
+      if(!v&&missing<0)missing=j;
+      nombres.push(v||'');
+    }
+    if(missing>0){
+      showErr('Por favor escribe el nombre #'+missing);
+      document.getElementById('rsvpN'+missing).focus();
+      return;
+    }
+    clearErr();
+    submitBtn.disabled=true;
+    submitBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9" stroke-dasharray="28" stroke-dashoffset="0"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.9s" repeatCount="indefinite"/></circle></svg> Enviando…';
+
+    fetch(SB_URL+'/rest/v1/rsvp_xv_paola',{
+      method:'POST',
+      headers:{
+        'apikey':SB_KEY,
+        'Authorization':'Bearer '+SB_KEY,
+        'Content-Type':'application/json',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify({pases:pases,nombres:nombres})
+    }).then(function(res){
+      if(!res.ok)return res.text().then(function(t){throw new Error(t);});
+      showSuccess();
+    }).catch(function(err){
+      submitBtn.disabled=false;
+      submitBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Confirmar Asistencia';
+      showErr('Hubo un error. Por favor intenta de nuevo.');
+      console.error(err);
+    });
+  });
+
+  function showSuccess(){
+    var wrap2=document.getElementById('rsvpNamesWrap');
+    var btn=document.getElementById('rsvpSubmitBtn');
+    var bdg=document.getElementById('rsvpBadge');
+    var suc=document.getElementById('rsvpSuccess');
+    gsap.to([wrap2,btn,bdg],{opacity:0,y:-8,duration:0.35,ease:'power2.in',stagger:0.05,onComplete:function(){
+      wrap2.style.display='none';
+      btn.style.display='none';
+      bdg.style.display='none';
+      gsap.set(suc,{autoAlpha:1});
+      gsap.fromTo(suc,{opacity:0,y:18},{opacity:1,y:0,duration:0.7,ease:'back.out(1.2)'});
+    }});
+  }
+  function showErr(msg){
+    var el=document.getElementById('rsvpError');
+    el.textContent=msg;
+    gsap.fromTo(el,{opacity:0,x:-6},{opacity:1,x:0,duration:0.28});
+  }
+  function clearErr(){
+    document.getElementById('rsvpError').textContent='';
+  }
+})();
 
 /* GALERIA — Rueda de la Fortuna (scroll-driven) */
 function initWheelGallery(){
