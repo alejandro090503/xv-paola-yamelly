@@ -181,9 +181,13 @@ section{padding:64px 26px;}
   font-size:13px;letter-spacing:5px;text-transform:uppercase;
   color:var(--accent);text-align:center;margin-bottom:8px;
 }
+.eyebrow-sky{color:var(--sky);}
+.eyebrow-rosa{color:var(--rosa);}
 .sec-title{
   font-family:'Great Vibes',cursive;font-size:50px;
-  color:var(--dark);text-align:center;line-height:1.1;margin-bottom:30px;
+  text-align:center;line-height:1.1;margin-bottom:30px;
+  background:linear-gradient(135deg,#8BB0D6 0%,#B08DC5 45%,#E8A8BE 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 
 /* COUNTDOWN V2 — Radial Rings */
@@ -241,8 +245,8 @@ section{padding:64px 26px;}
 }
 .loc1-card::before{
   content:'';position:absolute;left:0;top:12%;bottom:12%;width:2.5px;
-  background:linear-gradient(to bottom,transparent,var(--accent) 30%,var(--champagne) 70%,transparent);
-  opacity:.42;
+  background:linear-gradient(to bottom,transparent,#8BB0D6 25%,#B08DC5 55%,#E8A8BE 80%,transparent);
+  opacity:.52;
 }
 .loc1-top{padding:34px 28px 0;text-align:center;}
 .loc1-pin{
@@ -326,8 +330,9 @@ section{padding:64px 26px;}
   top:0;bottom:0;width:1px;z-index:0;
   background:linear-gradient(to bottom,
     transparent 0%,
-    rgba(176,141,197,0.20) 8%,
-    rgba(176,141,197,0.18) 92%,
+    rgba(139,176,214,0.30) 10%,
+    rgba(176,141,197,0.22) 45%,
+    rgba(232,168,190,0.28) 80%,
     transparent 100%);
 }
 .itv3-glow{
@@ -335,9 +340,9 @@ section{padding:64px 26px;}
   top:0;width:5px;height:110px;
   background:linear-gradient(to bottom,
     transparent,
-    rgba(212,184,228,0.55) 25%,
-    rgba(176,141,197,0.95) 50%,
-    rgba(212,184,228,0.55) 75%,
+    rgba(139,176,214,0.6) 20%,
+    rgba(176,141,197,0.9) 50%,
+    rgba(232,168,190,0.6) 80%,
     transparent);
   filter:blur(3px);border-radius:6px;
   z-index:1;pointer-events:none;
@@ -353,6 +358,14 @@ section{padding:64px 26px;}
   transform:rotate(45deg);border-radius:2px;
   box-shadow:0 0 0 4px rgba(176,141,197,0.10),0 0 18px rgba(176,141,197,0.40);
   margin-bottom:18px;flex-shrink:0;
+}
+.itv3-gem-sky{
+  background:linear-gradient(135deg,#B8D4EA 30%,#5A8FBF);
+  box-shadow:0 0 0 4px rgba(139,176,214,0.12),0 0 18px rgba(139,176,214,0.42);
+}
+.itv3-gem-rosa{
+  background:linear-gradient(135deg,#F0C8D8 30%,#C87898);
+  box-shadow:0 0 0 4px rgba(232,168,190,0.12),0 0 18px rgba(232,168,190,0.42);
 }
 .itv3-time{
   font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
@@ -1016,7 +1029,7 @@ footer .fd{
 
   <!-- ITINERARIO -->
   <section id="siti">
-    <div class="eyebrow rv">Programa del D&iacute;a</div>
+    <div class="eyebrow eyebrow-sky rv">Programa del D&iacute;a</div>
     <h2 class="sec-title rv">Itinerario</h2>
     <div class="itv3">
       <div class="itv3-track"></div>
@@ -1029,25 +1042,25 @@ footer .fd{
       </div>
 
       <div class="itv3-item rv">
-        <div class="itv3-gem"></div>
+        <div class="itv3-gem itv3-gem-sky"></div>
         <div class="itv3-time">18:00</div>
         <div class="itv3-ev">Recepci&oacute;n</div>
       </div>
 
       <div class="itv3-item rv">
-        <div class="itv3-gem"></div>
+        <div class="itv3-gem itv3-gem-rosa"></div>
         <div class="itv3-time">19:30</div>
         <div class="itv3-ev">Cena</div>
       </div>
 
       <div class="itv3-item rv">
-        <div class="itv3-gem"></div>
+        <div class="itv3-gem itv3-gem-sky"></div>
         <div class="itv3-time">20:30</div>
         <div class="itv3-ev">Brindis</div>
       </div>
 
       <div class="itv3-item rv">
-        <div class="itv3-gem"></div>
+        <div class="itv3-gem itv3-gem-rosa"></div>
         <div class="itv3-time">21:00</div>
         <div class="itv3-ev">Vals</div>
       </div>
@@ -1133,7 +1146,7 @@ footer .fd{
 
   <!-- FAMILIA V2 — Medallón retrato -->
   <section id="sfam">
-    <div class="eyebrow rv">Con la Bendici&oacute;n de</div>
+    <div class="eyebrow eyebrow-rosa rv">Con la Bendici&oacute;n de</div>
     <h2 class="sec-title rv">Mi Familia</h2>
     <div class="fam2">
 
@@ -1200,7 +1213,7 @@ footer .fd{
 
   <!-- CHAMBELANES V2 — Corte de Honor Placard -->
   <section id="schamb">
-    <div class="eyebrow rv">Mi Corte de Honor</div>
+    <div class="eyebrow eyebrow-sky rv">Mi Corte de Honor</div>
     <h2 class="sec-title rv">Chambelanes</h2>
     <div class="corte-wrap rv">
 
@@ -1237,7 +1250,7 @@ footer .fd{
 
   <!-- GALERIA V2 — Rueda de la Fortuna -->
   <section id="sgal">
-    <div class="eyebrow rv">Momentos</div>
+    <div class="eyebrow eyebrow-rosa rv">Momentos</div>
     <h2 class="sec-title rv">Galer&iacute;a</h2>
 
     <div class="wgal-scene">
@@ -1392,7 +1405,7 @@ footer .fd{
 
   <!-- RSVP -->
   <section class="rv" id="srsvp">
-    <div class="eyebrow">Confirma tu Asistencia</div>
+    <div class="eyebrow eyebrow-sky">Confirma tu Asistencia</div>
     <h2 class="sec-title">R.S.V.P.</h2>
     <div class="rsvp-card">
       <div class="rsvp-deadline">Fecha l&iacute;mite: 15 de Mayo de 2026</div>
