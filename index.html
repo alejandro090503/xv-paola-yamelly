@@ -33,12 +33,11 @@ body{
   max-width:430px;margin:0 auto;position:relative;overflow:clip;z-index:1;
   background-color:var(--bg);
   background-image:
-    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><polygon transform='translate(60,60)' points='0,-26 4,-10.8 18.4,-18.4 10.8,-4 26,0 10.8,4 18.4,18.4 4,10.8 0,26 -4,10.8 -18.4,18.4 -10.8,4 -26,0 -10.8,-4 -18.4,-18.4 -4,-10.8' fill='none' stroke='%23B08DC5' stroke-opacity='.09' stroke-width='1.3'/><rect x='38' y='38' width='44' height='44' fill='none' stroke='%23B08DC5' stroke-opacity='.04' stroke-width='.9' transform='rotate(45 60 60)'/><line x1='0' y1='0' x2='34' y2='34' stroke='%23B08DC5' stroke-opacity='.03' stroke-width='.7'/><line x1='120' y1='0' x2='86' y2='34' stroke='%23B08DC5' stroke-opacity='.03' stroke-width='.7'/><line x1='0' y1='120' x2='34' y2='86' stroke='%23B08DC5' stroke-opacity='.03' stroke-width='.7'/><line x1='120' y1='120' x2='86' y2='86' stroke='%23B08DC5' stroke-opacity='.03' stroke-width='.7'/></svg>"),
-    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><polygon points='30,4 56,30 30,56 4,30' fill='none' stroke='%23B08DC5' stroke-opacity='.05' stroke-width='.9'/></svg>"),
-    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><circle cx='15' cy='15' r='1.4' fill='%23B08DC5' fill-opacity='.06'/></svg>");
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><g transform='translate(100,100)'><ellipse rx='16' ry='28' fill='%23B08DC5' fill-opacity='.048' transform='rotate(0) translate(0,-12)'/><ellipse rx='16' ry='28' fill='%23E8A8BE' fill-opacity='.042' transform='rotate(72) translate(0,-12)'/><ellipse rx='16' ry='28' fill='%23B08DC5' fill-opacity='.042' transform='rotate(144) translate(0,-12)'/><ellipse rx='16' ry='28' fill='%23E8A8BE' fill-opacity='.042' transform='rotate(216) translate(0,-12)'/><ellipse rx='16' ry='28' fill='%23B08DC5' fill-opacity='.042' transform='rotate(288) translate(0,-12)'/><circle r='8' fill='%23D4B8E4' fill-opacity='.075'/></g><ellipse cx='28' cy='28' rx='8' ry='16' fill='%238BB0D6' fill-opacity='.034' transform='rotate(-38 28 28)'/><ellipse cx='172' cy='172' rx='8' ry='16' fill='%238BB0D6' fill-opacity='.034' transform='rotate(38 172 172)'/><ellipse cx='172' cy='28' rx='6' ry='12' fill='%23E8A8BE' fill-opacity='.030' transform='rotate(22 172 28)'/><ellipse cx='28' cy='172' rx='6' ry='12' fill='%23B08DC5' fill-opacity='.030' transform='rotate(-22 28 172)'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><g transform='translate(50,50)'><ellipse rx='9' ry='17' fill='%23E8A8BE' fill-opacity='.038' transform='rotate(36) translate(0,-7)'/><ellipse rx='9' ry='17' fill='%23B08DC5' fill-opacity='.034' transform='rotate(108) translate(0,-7)'/><ellipse rx='9' ry='17' fill='%23E8A8BE' fill-opacity='.034' transform='rotate(180) translate(0,-7)'/><ellipse rx='9' ry='17' fill='%23B08DC5' fill-opacity='.034' transform='rotate(252) translate(0,-7)'/><ellipse rx='9' ry='17' fill='%23E8A8BE' fill-opacity='.034' transform='rotate(324) translate(0,-7)'/><circle r='4.5' fill='%23D4B8E4' fill-opacity='.06'/></g></svg>");
   background-repeat:repeat;
-  background-size:120px 120px, 60px 60px, 30px 30px;
-  background-position:0 0, 30px 30px, 15px 15px;
+  background-size:200px 200px, 100px 100px;
+  background-position:0 0, 50px 50px;
 }
 
 /* ENVELOPE SCREEN */
@@ -172,8 +171,8 @@ body{
 }
 
 /* ORNAMENTO */
-.orn{display:flex;justify-content:center;padding:4px 0;}
-.orn svg{width:130px;height:30px;}
+.orn{display:flex;justify-content:center;padding:10px 0;}
+.orn svg{width:100%;max-width:300px;height:42px;}
 
 /* SECCIONES */
 section{padding:64px 26px;}
@@ -231,25 +230,54 @@ section{padding:64px 26px;}
   font-size:15px;color:var(--dark);opacity:.6;letter-spacing:1px;line-height:1.6;
 }
 
-/* UBICACION */
-.loc-card{
-  background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(176,141,197,0.25);border-radius:6px;padding:30px 22px 28px;
-  box-shadow:0 4px 24px rgba(139,107,163,0.10),inset 0 1px 0 rgba(255,255,255,0.80);
-  margin-bottom:18px;text-align:center;position:relative;overflow:hidden;
+/* UBICACION V2 — Editorial Location Cards */
+.loc2-wrap{display:flex;flex-direction:column;gap:20px;}
+.loc2-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(145deg,rgba(255,255,255,0.82),rgba(251,245,255,0.94));
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-radius:26px;
+  border:1px solid rgba(176,141,197,0.14);
+  box-shadow:0 10px 44px rgba(139,107,163,0.09),inset 0 1px 0 rgba(255,255,255,0.92);
 }
-.loc-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--champagne) 60%,transparent);
+.loc2-card::before{
+  content:'';position:absolute;left:0;top:18%;bottom:18%;width:2.5px;
+  background:linear-gradient(to bottom,transparent,var(--accent) 30%,var(--champagne) 70%,transparent);
+  opacity:.45;
 }
-.loc-card .lt{font-family:'Great Vibes',cursive;font-size:36px;color:var(--dark);margin-bottom:4px;}
-.loc-card .ls{
+.loc2-badge{
+  width:54px;height:54px;border-radius:50%;margin:30px auto 0;
+  background:linear-gradient(135deg,rgba(176,141,197,0.13),rgba(176,141,197,0.24));
+  border:1.5px solid rgba(176,141,197,0.28);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(139,107,163,0.11);
+}
+.loc2-badge svg{width:23px;height:23px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.loc2-body{padding:14px 28px 26px;text-align:center;}
+.loc2-type{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:4px;opacity:.8;
 }
-.loc-card p{font-size:13px;margin:3px 0;line-height:1.6;color:var(--text);}
-.loc-card .lh{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--dark);letter-spacing:3px;margin-top:10px;}
-.map-embed{width:100%;height:200px;border:0;border-radius:12px;margin-top:18px;display:block;}
+.loc2-name{
+  font-family:'Great Vibes',cursive;font-size:40px;
+  color:var(--dark);line-height:1.1;margin-bottom:10px;
+}
+.loc2-divider{
+  width:44px;height:1px;margin:0 auto 16px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:.38;
+}
+.loc2-addr{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  color:var(--text);line-height:1.75;letter-spacing:.3px;
+}
+.loc2-addr strong{font-weight:500;color:var(--dark);}
+.loc2-time{
+  font-family:'Cormorant Garamond',serif;font-size:30px;
+  color:var(--dark);letter-spacing:5px;margin:14px 0 18px;line-height:1;
+}
+.loc2-map{width:100%;height:195px;border:0;display:block;border-radius:0 0 24px 24px;opacity:.9;}
 .btn{
   display:inline-block;margin-top:16px;padding:12px 30px;
   background:linear-gradient(135deg,#B08DC5,#8B6BA3);color:#FFFFFF;border-radius:30px;
@@ -317,61 +345,169 @@ section{padding:64px 26px;}
   text-transform:uppercase;color:var(--accent);margin-top:5px;line-height:1.4;
 }
 
-/* DRESS CODE */
-.dc-note{
-  text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:17px;letter-spacing:3px;text-transform:uppercase;color:var(--dark);margin-bottom:12px;
+/* DRESS CODE V2 — Editorial oscuro */
+.dc2-wrap{
+  position:relative;overflow:hidden;
+  background:linear-gradient(155deg,#2B1E38 0%,#1A1226 55%,#2B1E38 100%);
+  border-radius:28px;padding:36px 24px 32px;
+  box-shadow:0 18px 60px rgba(58,45,80,0.28);
 }
-.dc-avoid{
-  text-align:center;font-family:'Lato',sans-serif;font-size:12px;
-  color:var(--accent);margin-bottom:28px;letter-spacing:1px;
+.dc2-wrap::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 18% 18%,rgba(176,141,197,0.13) 0%,transparent 60%),
+    radial-gradient(ellipse at 82% 82%,rgba(232,168,190,0.09) 0%,transparent 60%);
 }
-.swatches{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;}
-.sw{text-align:center;}
-.sw .dot{
-  width:66px;height:66px;border-radius:50%;margin:0 auto 10px;
-  box-shadow:0 8px 24px rgba(139,107,163,0.15);border:2px solid rgba(176,141,197,0.30);
+.dc2-wrap::after{
+  content:'';position:absolute;top:-1px;left:18%;right:18%;height:2px;
+  background:linear-gradient(90deg,transparent,#B08DC5 30%,#E8A8BE 70%,transparent);
+  opacity:.55;
 }
-.sw .lbl{
+.dc2-eyebrow{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);
+  font-size:11px;letter-spacing:6px;text-transform:uppercase;
+  color:rgba(212,184,228,0.55);text-align:center;margin-bottom:4px;position:relative;
+}
+.dc2-title{
+  font-family:'Great Vibes',cursive;font-size:50px;
+  color:#fff;text-align:center;line-height:1.05;margin-bottom:6px;position:relative;
+  filter:drop-shadow(0 2px 14px rgba(176,141,197,0.45));
+}
+.dc2-formal{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;
+  letter-spacing:5px;text-transform:uppercase;
+  color:rgba(212,184,228,0.70);text-align:center;margin-bottom:22px;position:relative;
+}
+.dc2-strip{
+  display:flex;height:5px;border-radius:3px;overflow:hidden;margin-bottom:26px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.35);position:relative;
+}
+.dc2-strip span{flex:1;}
+.dc2-palette{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;position:relative;}
+.dc2-swatch{text-align:center;}
+.dc2-swatch .ds-circle{
+  width:54px;height:54px;border-radius:50%;margin:0 auto 8px;
+  border:2px solid rgba(255,255,255,0.13);
+  box-shadow:0 5px 18px rgba(0,0,0,0.28);
+}
+.dc2-swatch .ds-name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.50);
+}
+.dc2-avoid{
+  position:relative;text-align:center;padding:15px 18px;
+  border:1px solid rgba(232,168,190,0.22);border-radius:14px;
+  background:rgba(232,168,190,0.06);
+}
+.dc2-avoid::before{
+  content:'✕';position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  width:22px;height:22px;border-radius:50%;
+  background:#1A1226;border:1px solid rgba(232,168,190,0.32);
+  font-size:10px;line-height:22px;text-align:center;
+  color:rgba(232,168,190,0.65);
+}
+.dc2-avoid p{
+  font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;
+  color:rgba(232,168,190,0.72);letter-spacing:1px;line-height:1.65;
 }
 
-/* FAMILIA */
-.fam{display:flex;flex-direction:column;gap:20px;align-items:center;text-align:center;}
-.fam-g{
-  width:100%;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(176,141,197,0.20);border-radius:4px;
-  padding:22px 24px;position:relative;overflow:hidden;
-  box-shadow:0 4px 18px rgba(139,107,163,0.08),inset 0 1px 0 rgba(255,255,255,0.70);
+/* FAMILIA V2 — Medallón retrato */
+.fam2{display:flex;flex-direction:column;gap:0;align-items:stretch;}
+.fam2-group{
+  width:100%;text-align:center;position:relative;padding:30px 26px;
+  background:linear-gradient(145deg,rgba(255,255,255,0.78),rgba(251,245,255,0.92));
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(176,141,197,0.13);
+  box-shadow:0 6px 30px rgba(139,107,163,0.07),inset 0 1px 0 rgba(255,255,255,0.88);
 }
-.fam-g::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
-  background:linear-gradient(90deg,transparent,var(--accent) 50%,transparent);
+.fam2-group:first-child{border-radius:24px 24px 0 0;}
+.fam2-group:last-child{border-radius:0 0 24px 24px;}
+.fam2-medallion{
+  width:52px;height:52px;border-radius:50%;margin:0 auto 14px;
+  background:linear-gradient(135deg,rgba(176,141,197,0.14),rgba(212,184,228,0.26));
+  border:1.5px solid rgba(176,141,197,0.32);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(139,107,163,0.11);
 }
-.fam-g .role{
+.fam2-medallion svg{width:22px;height:22px;fill:none;stroke:var(--accent);stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;}
+.fam2-role{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+  font-size:11px;letter-spacing:6px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px;opacity:.82;
 }
-.fam-g .names{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--dark);line-height:1.65;}
-.amp{font-style:italic;font-size:15px;color:var(--accent);opacity:.75;}
-.flor{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--accent);opacity:.35;letter-spacing:8px;}
+.fam2-names{
+  font-family:'Cormorant Garamond',serif;font-size:20px;
+  color:var(--dark);line-height:1.80;
+}
+.fam2-amp{
+  display:block;font-style:italic;font-size:30px;
+  color:var(--accent);opacity:.45;line-height:1.1;margin:4px 0;
+}
+.fam2-divider{
+  width:100%;display:flex;align-items:center;justify-content:center;
+  height:46px;position:relative;background:rgba(255,255,255,0.5);
+  border-left:1px solid rgba(176,141,197,0.13);border-right:1px solid rgba(176,141,197,0.13);
+}
+.fam2-divider::before,.fam2-divider::after{
+  content:'';position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(176,141,197,0.18),transparent);
+}
+.fam2-divider::before{top:0;}
+.fam2-divider::after{bottom:0;}
+.fam2-divider svg{width:100px;height:26px;position:relative;}
 
-/* CHAMBELANES */
-.chamb-grid{display:flex;flex-direction:column;gap:12px;align-items:center;}
-.chamb-card{
-  width:100%;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(176,141,197,0.20);border-radius:4px;
-  padding:18px 24px;text-align:center;position:relative;overflow:hidden;
-  box-shadow:0 4px 18px rgba(139,107,163,0.08);
+/* CHAMBELANES V2 — Corte de Honor Placard */
+.corte-wrap{
+  position:relative;
+  background:linear-gradient(145deg,rgba(255,255,255,0.74),rgba(251,245,255,0.90));
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(139,176,214,0.18);
+  border-radius:26px;overflow:hidden;
+  box-shadow:0 8px 38px rgba(139,107,163,0.08);
+  padding:10px 0;
 }
-.chamb-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
-  background:linear-gradient(90deg,transparent,var(--sky) 50%,transparent);
+.corte-wrap::before{
+  content:'';position:absolute;top:-1px;left:22%;right:22%;height:2.5px;
+  background:linear-gradient(90deg,transparent,#8BB0D6 30%,#B08DC5 70%,transparent);
+  opacity:.50;
 }
-.chamb-card .chamb-name{
-  font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--dark);line-height:1.5;
+.corte-wrap::after{
+  content:'';position:absolute;bottom:-1px;left:22%;right:22%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(139,176,214,0.22),transparent);
 }
+.corte-item{
+  display:flex;align-items:center;gap:18px;padding:20px 26px;
+  border-bottom:1px solid rgba(176,141,197,0.07);
+  transition:background .3s ease;
+}
+.corte-item:last-child{border-bottom:none;}
+.corte-item:hover{background:rgba(176,141,197,0.03);}
+.corte-numeral{
+  font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;
+  color:var(--accent);opacity:.22;letter-spacing:-2px;line-height:1;
+  min-width:46px;text-align:right;flex-shrink:0;
+}
+.corte-vline{
+  width:1.5px;height:44px;flex-shrink:0;
+  background:linear-gradient(to bottom,transparent,rgba(139,176,214,0.35),transparent);
+}
+.corte-text{flex:1;}
+.corte-name{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  color:var(--dark);line-height:1.4;letter-spacing:.3px;
+}
+.corte-role-tag{
+  font-family:'Lato',sans-serif;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--sky);margin-top:4px;opacity:.85;
+}
+.corte-star{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;margin-left:auto;
+  background:linear-gradient(135deg,rgba(139,176,214,0.10),rgba(139,176,214,0.20));
+  border:1px solid rgba(139,176,214,0.22);
+  display:flex;align-items:center;justify-content:center;
+}
+.corte-star svg{width:16px;height:16px;}
 
 /* GALERIA */
 #sgal{padding:36px 0 24px;}
@@ -390,30 +526,73 @@ section{padding:64px 26px;}
   border:1px solid rgba(176,141,197,0.25);
 }
 
-/* MESA DE REGALOS */
-.gift-grid{display:flex;flex-direction:column;gap:16px;}
-.gift-card{
-  background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(176,141,197,0.18);border-radius:18px;padding:22px;
-  box-shadow:0 4px 20px rgba(139,107,163,0.08);display:flex;align-items:center;gap:18px;
+/* MESA DE REGALOS V2 — Centrada Ceremonial */
+.gift2-wrap{display:flex;flex-direction:column;gap:18px;align-items:center;}
+.gift2-card{
+  width:100%;
+  background:linear-gradient(145deg,rgba(255,255,255,0.82),rgba(251,245,255,0.95));
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-radius:26px;overflow:hidden;
+  border:1px solid rgba(176,141,197,0.14);
+  box-shadow:0 8px 36px rgba(139,107,163,0.09);
+  text-align:center;
 }
-.gift-logo-wrap{
-  width:64px;height:64px;border-radius:14px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
+.gift2-card::before{
+  content:'';display:block;height:2px;
+  background:linear-gradient(90deg,transparent,#B08DC5 30%,#D4B8E4 70%,transparent);
+  opacity:.48;
 }
-.gift-logo-wrap.bank{background:linear-gradient(135deg,#B08DC5,#8B6BA3);}
-.gift-logo-wrap.sobres{background:linear-gradient(135deg,#E8A8BE,#D48BA8);}
-.gift-body{flex:1;min-width:0;}
-.gift-body .gb-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--dark);font-weight:500;margin-bottom:2px;}
-.gift-body .gb-desc{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:1px;color:var(--accent);text-transform:uppercase;}
-.gift-body .gb-account{font-family:'Lato',sans-serif;font-size:13px;color:var(--text);margin-top:6px;letter-spacing:1px;}
+.gift2-top{padding:26px 26px 20px;}
+.gift2-icon-wrap{
+  width:66px;height:66px;border-radius:22px;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 22px rgba(139,107,163,0.18);
+}
+.gift2-name{
+  font-family:'Great Vibes',cursive;font-size:34px;
+  color:var(--dark);margin-bottom:4px;
+}
+.gift2-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);opacity:.72;
+}
+.gift2-acct-label{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:11px;letter-spacing:2px;color:var(--accent);opacity:.58;margin-top:14px;
+}
+.gift2-account{
+  font-family:'Lato',sans-serif;font-size:19px;letter-spacing:4px;
+  color:var(--dark);margin:6px 0 0;font-variant-numeric:tabular-nums;
+}
+.gift2-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(176,141,197,0.14),transparent);}
+.gift2-bottom{padding:16px 26px 22px;}
 .btn-copy{
-  display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:9px 18px;
-  background:var(--surface);color:var(--dark);border-radius:20px;
-  font-family:'Cormorant Garamond',serif;font-size:11px;text-transform:uppercase;letter-spacing:2px;
-  border:1px solid rgba(176,141,197,0.30);cursor:pointer;transition:background .25s;
+  display:inline-flex;align-items:center;gap:7px;padding:12px 24px;
+  background:linear-gradient(135deg,#B08DC5,#8B6BA3);color:#fff;border-radius:24px;
+  font-family:'Cormorant Garamond',serif;font-size:11px;text-transform:uppercase;letter-spacing:2.5px;
+  border:none;cursor:pointer;transition:opacity .3s,transform .3s;
+  box-shadow:0 4px 16px rgba(139,107,163,0.26);
 }
-.btn-copy:hover{background:rgba(176,141,197,0.15);}
+.btn-copy:hover{opacity:.88;transform:translateY(-1px);}
+.gift2-envelope{
+  width:100%;text-align:center;padding:26px 24px;
+  background:linear-gradient(145deg,rgba(232,168,190,0.07),rgba(212,184,228,0.11));
+  border-radius:26px;border:1px solid rgba(232,168,190,0.18);
+  box-shadow:0 6px 28px rgba(232,168,190,0.07);
+}
+.gift2-env-icon{
+  width:58px;height:58px;border-radius:50%;margin:0 auto 14px;
+  background:linear-gradient(135deg,rgba(232,168,190,0.18),rgba(212,184,228,0.28));
+  border:1.5px solid rgba(232,168,190,0.30);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(232,168,190,0.14);
+}
+.gift2-env-title{font-family:'Great Vibes',cursive;font-size:34px;color:var(--dark);margin-bottom:8px;}
+.gift2-env-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:15px;color:var(--text);opacity:.68;line-height:1.65;
+}
 
 /* RSVP */
 .rsvp-card{
@@ -510,15 +689,25 @@ footer .fd{
 
   <!-- ORNAMENTO -->
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
@@ -584,44 +773,73 @@ footer .fd{
   </section>
 
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
-  <!-- UBICACION -->
+  <!-- UBICACION V2 -->
   <section id="subic">
     <h2 class="sec-title rv">Ubicaci&oacute;n</h2>
+    <div class="loc2-wrap">
 
-    <div class="loc-card rv" id="lc1">
-      <div class="lt">Ceremonia</div>
-      <div class="ls">Misa de XV A&ntilde;os</div>
-      <p><strong>Rinc&oacute;n Tapatio</strong></p>
-      <p>Calle Paseo de las Azucenas 50</p>
-      <p>Jiutepec, Morelos</p>
-      <div class="lh">17:00 hrs</div>
-      <a class="btn" href="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX" target="_blank">C&oacute;mo Llegar</a>
-      <iframe class="map-embed"
-        src="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX&output=embed&hl=es"
-        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
+      <div class="loc2-card rv">
+        <div class="loc2-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="loc2-body">
+          <div class="loc2-type">Misa de XV A&ntilde;os</div>
+          <div class="loc2-name">Ceremonia</div>
+          <div class="loc2-divider"></div>
+          <div class="loc2-addr">
+            <strong>Rinc&oacute;n Tapat&iacute;o</strong><br>
+            Calle Paseo de las Azucenas 50<br>
+            Jiutepec, Morelos
+          </div>
+          <div class="loc2-time">17:00 hrs</div>
+          <a class="btn" href="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX" target="_blank">C&oacute;mo Llegar</a>
+        </div>
+        <iframe class="loc2-map"
+          src="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX&output=embed&hl=es"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-    <div class="loc-card rv" id="lc2">
-      <div class="lt">Recepci&oacute;n</div>
-      <div class="ls">Cena y Fiesta</div>
-      <p><strong>Rinc&oacute;n Tapatio</strong></p>
-      <p>Calle Paseo de las Azucenas 50</p>
-      <p>Jiutepec, Morelos</p>
-      <div class="lh">18:00 hrs</div>
-      <a class="btn" href="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX" target="_blank">C&oacute;mo Llegar</a>
+      <div class="loc2-card rv">
+        <div class="loc2-badge" style="background:linear-gradient(135deg,rgba(139,176,214,0.13),rgba(139,176,214,0.24));border-color:rgba(139,176,214,0.28);">
+          <svg viewBox="0 0 24 24" style="stroke:#8BB0D6"><path d="M8 2l4 9 4-9M12 11v7M8 21h8"/></svg>
+        </div>
+        <div class="loc2-body">
+          <div class="loc2-type" style="color:var(--sky)">Cena y Fiesta</div>
+          <div class="loc2-name">Recepci&oacute;n</div>
+          <div class="loc2-divider" style="background:linear-gradient(90deg,transparent,var(--sky),transparent)"></div>
+          <div class="loc2-addr">
+            <strong>Rinc&oacute;n Tapat&iacute;o</strong><br>
+            Calle Paseo de las Azucenas 50<br>
+            Jiutepec, Morelos
+          </div>
+          <div class="loc2-time">18:00 hrs</div>
+          <a class="btn" style="background:linear-gradient(135deg,#8BB0D6,#6A96C2);" href="https://maps.google.com/maps?q=Rincon+Tapatio+Calle+Paseo+de+las+Azucenas+50,+Jiutepec,+62577,+Mor,+MX" target="_blank">C&oacute;mo Llegar</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -634,15 +852,25 @@ footer .fd{
   </section>
 
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
@@ -717,86 +945,176 @@ footer .fd{
   </section>
 
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
-  <!-- DRESS CODE -->
+  <!-- DRESS CODE V2 — Editorial oscuro -->
   <section class="rv" id="sdc">
-    <div class="eyebrow">Etiqueta</div>
-    <h2 class="sec-title">Dress Code</h2>
-    <div class="dc-note">Formal</div>
-    <div class="dc-avoid">Se les pide amablemente evitar tonos lilas o morados</div>
-    <div class="swatches" id="swatches">
-      <div class="sw"><div class="dot" style="background:#1C1C1C;"></div><div class="lbl">Negro</div></div>
-      <div class="sw"><div class="dot" style="background:#8BB0D6;"></div><div class="lbl">Azul Cielo</div></div>
-      <div class="sw"><div class="dot" style="background:#E8A8BE;"></div><div class="lbl">Rosa</div></div>
-      <div class="sw"><div class="dot" style="background:#E8D5C4;"></div><div class="lbl">Nude</div></div>
+    <div class="dc2-wrap">
+      <div class="dc2-eyebrow">Etiqueta</div>
+      <div class="dc2-title">Dress Code</div>
+      <div class="dc2-formal">Formal</div>
+      <div class="dc2-strip">
+        <span style="background:#1C1C1C;"></span>
+        <span style="background:#8BB0D6;"></span>
+        <span style="background:#E8A8BE;"></span>
+        <span style="background:#E8D5C4;"></span>
+      </div>
+      <div class="dc2-palette" id="swatches">
+        <div class="dc2-swatch"><div class="ds-circle" style="background:#1C1C1C;"></div><div class="ds-name">Negro</div></div>
+        <div class="dc2-swatch"><div class="ds-circle" style="background:#8BB0D6;"></div><div class="ds-name">Azul Cielo</div></div>
+        <div class="dc2-swatch"><div class="ds-circle" style="background:#E8A8BE;"></div><div class="ds-name">Rosa</div></div>
+        <div class="dc2-swatch"><div class="ds-circle" style="background:#E8D5C4;"></div><div class="ds-name">Nude</div></div>
+      </div>
+      <div class="dc2-avoid">
+        <p>Se les pide amablemente evitar<br>tonos lilas o morados</p>
+      </div>
     </div>
   </section>
 
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
-  <!-- FAMILIA -->
+  <!-- FAMILIA V2 — Medallón retrato -->
   <section id="sfam">
     <div class="eyebrow rv">Con la Bendici&oacute;n de</div>
     <h2 class="sec-title rv">Mi Familia</h2>
-    <div class="fam">
-      <div class="fam-g rv">
-        <div class="role">Mis Padres</div>
-        <div class="names">Jonathan Jassiel Santeliz Pelaez<br><span class="amp">&amp;</span><br>Mary Alin Vazquez Diaz</div>
+    <div class="fam2">
+
+      <div class="fam2-group rv">
+        <div class="fam2-medallion">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="fam2-role">Mis Padres</div>
+        <div class="fam2-names">
+          Jonathan Jassiel Santeliz Pelaez
+          <span class="fam2-amp">&amp;</span>
+          Mary Alin Vazquez Diaz
+        </div>
       </div>
-      <div class="flor rv">&#10086; &#10086; &#10086;</div>
-      <div class="fam-g rv">
-        <div class="role">Mis Padrinos</div>
-        <div class="names">Jorge Uribe Beltr&aacute;n<br><span class="amp">&amp;</span><br>Ana Mar&iacute;a Diaz Carmona</div>
+
+      <div class="fam2-divider rv">
+        <svg viewBox="0 0 100 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="13" x2="32" y2="13" stroke="#B08DC5" stroke-width="0.7" opacity="0.32"/>
+          <path d="M32 13 Q38 5 44 13" stroke="#B08DC5" stroke-width="0.8" fill="none" opacity="0.44"/>
+          <path d="M50 4 L57 13 L50 22 L43 13 Z" fill="rgba(176,141,197,0.10)" stroke="#B08DC5" stroke-width="0.9" opacity="0.48"/>
+          <circle cx="50" cy="13" r="3" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.6" opacity="0.55"/>
+          <path d="M56 13 Q62 5 68 13" stroke="#B08DC5" stroke-width="0.8" fill="none" opacity="0.44"/>
+          <line x1="68" y1="13" x2="100" y2="13" stroke="#B08DC5" stroke-width="0.7" opacity="0.32"/>
+        </svg>
       </div>
+
+      <div class="fam2-group rv" style="border-top:none;">
+        <div class="fam2-medallion" style="background:linear-gradient(135deg,rgba(139,176,214,0.14),rgba(184,212,234,0.26));border-color:rgba(139,176,214,0.32);">
+          <svg viewBox="0 0 24 24" style="stroke:#8BB0D6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="fam2-role" style="color:var(--sky)">Mis Padrinos</div>
+        <div class="fam2-names">
+          Jorge Uribe Beltr&aacute;n
+          <span class="fam2-amp" style="color:var(--sky)">&amp;</span>
+          Ana Mar&iacute;a Diaz Carmona
+        </div>
+      </div>
+
     </div>
   </section>
 
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
-  <!-- CHAMBELANES -->
+  <!-- CHAMBELANES V2 — Corte de Honor Placard -->
   <section id="schamb">
     <div class="eyebrow rv">Mi Corte de Honor</div>
     <h2 class="sec-title rv">Chambelanes</h2>
-    <div class="chamb-grid">
-      <div class="chamb-card rv">
-        <div class="chamb-name">Edwin Salvador Monroy Rodr&iacute;guez</div>
+    <div class="corte-wrap rv">
+
+      <div class="corte-item">
+        <div class="corte-numeral">I</div>
+        <div class="corte-vline"></div>
+        <div class="corte-text">
+          <div class="corte-name">Edwin Salvador Monroy Rodr&iacute;guez</div>
+          <div class="corte-role-tag">Chambelan de Honor</div>
+        </div>
+        <div class="corte-star">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8BB0D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
       </div>
-      <div class="chamb-card rv">
-        <div class="chamb-name">El&iacute;as Emiliano P&eacute;rez Castrej&oacute;n</div>
+
+      <div class="corte-item">
+        <div class="corte-numeral">II</div>
+        <div class="corte-vline"></div>
+        <div class="corte-text">
+          <div class="corte-name">El&iacute;as Emiliano P&eacute;rez Castrej&oacute;n</div>
+          <div class="corte-role-tag">Chambelan</div>
+        </div>
+        <div class="corte-star">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8BB0D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -809,62 +1127,88 @@ footer .fd{
   </section>
 
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
-  <!-- MESA DE REGALOS -->
+  <!-- MESA DE REGALOS V2 — Centrada Ceremonial -->
   <section class="rv" id="sgifts">
     <div class="eyebrow">Con Cari&ntilde;o</div>
     <h2 class="sec-title">Mesa de Regalos</h2>
-    <div class="gift-grid">
+    <div class="gift2-wrap">
 
-      <div class="gift-card rv">
-        <div class="gift-logo-wrap bank">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><path d="M11.5 2L2 7v2h20V7L11.5 2zm-7 9v8H7v-8H4.5zm4.5 0v8h2v-8H9zm4 0v8h2v-8h-2zm4.5 0v8H19v-8h-1.5zM2 21v2h20v-2H2z"/></svg>
+      <div class="gift2-card rv">
+        <div class="gift2-card::before"></div>
+        <div class="gift2-top">
+          <div class="gift2-icon-wrap" style="background:linear-gradient(135deg,#B08DC5,#8B6BA3);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M11.5 2L2 7v2h20V7L11.5 2zm-7 9v8H7v-8H4.5zm4.5 0v8h2v-8H9zm4 0v8h2v-8h-2zm4.5 0v8H19v-8h-1.5zM2 21v2h20v-2H2z"/></svg>
+          </div>
+          <div class="gift2-name">Transferencia</div>
+          <div class="gift2-sub">Banco Azteca &middot; Mary Alin Vazquez Diaz</div>
+          <div class="gift2-acct-label">N&uacute;mero de Tarjeta</div>
+          <div class="gift2-account" id="accountNum">4027 6658 6544 3411</div>
         </div>
-        <div class="gift-body">
-          <div class="gb-name">Transferencia</div>
-          <div class="gb-desc">Banco Azteca &middot; Mary Alin Vazquez Diaz</div>
-          <div class="gb-account" id="accountNum">4027 6658 6544 3411</div>
+        <div class="gift2-divider"></div>
+        <div class="gift2-bottom">
           <button class="btn-copy" id="copyBtn" onclick="copyAccount()">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-            Copiar CLABE
+            Copiar N&uacute;mero
           </button>
         </div>
       </div>
 
-      <div class="gift-card rv">
-        <div class="gift-logo-wrap sobres">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      <div class="gift2-envelope rv">
+        <div class="gift2-env-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E8A8BE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
         </div>
-        <div class="gift-body">
-          <div class="gb-name">Lluvia de Sobres</div>
-          <div class="gb-desc">Tu presencia es el mejor regalo</div>
-        </div>
+        <div class="gift2-env-title">Lluvia de Sobres</div>
+        <div class="gift2-env-sub">Tu presencia es el regalo<br>m&aacute;s valioso para Paola</div>
       </div>
 
     </div>
   </section>
 
   <div class="orn rv">
-    <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 15 Q35 5 65 15 T122 15" stroke="#B08DC5" stroke-width=".9" opacity=".5"/>
-      <ellipse cx="22" cy="10" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(-15 22 10)"/>
-      <ellipse cx="38" cy="19" rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(12 38 19)"/>
-      <ellipse cx="55" cy="9"  rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(-8 55 9)"/>
-      <ellipse cx="75" cy="19" rx="5" ry="2.4" fill="#B08DC5" opacity=".35" transform="rotate(8 75 19)"/>
-      <ellipse cx="92" cy="9"  rx="5" ry="2.4" fill="#E8A8BE" opacity=".35" transform="rotate(-12 92 9)"/>
-      <ellipse cx="108" cy="19" rx="5" ry="2.4" fill="#8BB0D6" opacity=".35" transform="rotate(6 108 19)"/>
-      <circle cx="65" cy="15" r="3" fill="#B08DC5" opacity=".5"/>
+    <svg viewBox="0 0 300 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Regla doble izquierda -->
+      <line x1="0" y1="20" x2="96" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="0" y1="23" x2="88" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
+      <!-- Rulo izquierdo -->
+      <path d="M96 21.5 Q104 7 116 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Diamante pequeño izquierdo -->
+      <path d="M122 21.5 L126.5 15.5 L131 21.5 L126.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Diamante central -->
+      <path d="M150 6 L165 21.5 L150 37 L135 21.5 Z" fill="rgba(176,141,197,0.09)" stroke="#B08DC5" stroke-width="1.05" opacity="0.50"/>
+      <!-- Círculo central -->
+      <circle cx="150" cy="21.5" r="4.5" fill="rgba(212,184,228,0.22)" stroke="#B08DC5" stroke-width="0.7" opacity="0.58"/>
+      <!-- Diamante pequeño derecho -->
+      <path d="M169 21.5 L173.5 15.5 L178 21.5 L173.5 27.5 Z" fill="#E8A8BE" fill-opacity="0.40" stroke="#E8A8BE" stroke-width="0.4" opacity="0.5"/>
+      <!-- Rulo derecho -->
+      <path d="M184 21.5 Q196 7 204 21.5" stroke="#B08DC5" stroke-width="0.95" fill="none" opacity="0.46"/>
+      <!-- Regla doble derecha -->
+      <line x1="204" y1="20" x2="300" y2="20" stroke="#B08DC5" stroke-width="0.85" opacity="0.34"/>
+      <line x1="212" y1="23" x2="300" y2="23" stroke="#B08DC5" stroke-width="0.38" opacity="0.16"/>
     </svg>
   </div>
 
