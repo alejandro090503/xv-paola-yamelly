@@ -274,19 +274,24 @@ section{padding:64px 26px;}
   border-radius:18px;background:rgba(253,242,248,0.45);
   overflow:hidden;
 }
-.loc1-event{padding:20px 16px;text-align:center;}
+.loc1-event{
+  padding:18px 14px 20px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+}
 .loc1-event-label{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:10px;letter-spacing:4px;text-transform:uppercase;
-  color:var(--accent);opacity:.82;margin-bottom:6px;
+  font-size:10px;letter-spacing:3.5px;text-transform:uppercase;
+  color:var(--accent);opacity:.82;margin-bottom:8px;
+  min-height:2.8em;display:flex;align-items:center;justify-content:center;
+  line-height:1.4;
 }
 .loc1-event-title{
   font-family:'Great Vibes',cursive;font-size:28px;
-  color:var(--dark);line-height:1.1;margin-bottom:9px;
+  color:var(--dark);line-height:1.1;margin-bottom:10px;
 }
 .loc1-event-time{
-  font-family:'Cormorant Garamond',serif;font-size:24px;
-  color:var(--dark);letter-spacing:4px;line-height:1;
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  color:var(--dark);letter-spacing:5px;line-height:1;
 }
 .loc1-vdiv{width:1px;background:linear-gradient(to bottom,transparent,rgba(176,141,197,0.28),transparent);}
 .loc1-cta{text-align:center;padding:0 22px 26px;}
@@ -309,58 +314,58 @@ section{padding:64px 26px;}
 .cal-c{text-align:center;}
 .cal-c p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--dark);margin-bottom:18px;}
 
-/* ITINERARIO V2 — Cards + Icons + Color Cycling */
-#siti{overflow:visible;}
-.tl3{display:flex;flex-direction:column;gap:8px;position:relative;}
-.tl3-connector{
-  position:absolute;left:27px;top:44px;bottom:44px;width:1.5px;z-index:0;
-  background:linear-gradient(to bottom,transparent,#B08DC5 12%,#8BB0D6 40%,#E8A8BE 68%,#B08DC5 88%,transparent);
-  opacity:.14;
+/* ITINERARIO V3 — Centered Glowing Timeline */
+#siti{overflow:visible;padding-left:24px;padding-right:24px;}
+.itv3{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;
+  padding:10px 0 10px;
 }
-.tl3-item{
-  display:flex;align-items:center;gap:16px;padding:8px 0;position:relative;z-index:1;
+.itv3-track{
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:0;bottom:0;width:1px;z-index:0;
+  background:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(176,141,197,0.20) 8%,
+    rgba(176,141,197,0.18) 92%,
+    transparent 100%);
 }
-.tl3-marker{
-  width:54px;height:54px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--bg);
-  border:1.5px solid rgba(176,141,197,0.18);
-  box-shadow:0 4px 18px rgba(139,107,163,0.06);
-  transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .5s ease,border-color .4s ease;
+.itv3-glow{
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:0;width:5px;height:110px;
+  background:linear-gradient(to bottom,
+    transparent,
+    rgba(212,184,228,0.55) 25%,
+    rgba(176,141,197,0.95) 50%,
+    rgba(212,184,228,0.55) 75%,
+    transparent);
+  filter:blur(3px);border-radius:6px;
+  z-index:1;pointer-events:none;
 }
-.tl3-marker svg{width:22px;height:22px;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:opacity .5s ease;}
-.tl3-marker.c-lila{border-color:rgba(176,141,197,0.30);}
-.tl3-marker.c-lila svg{stroke:#B08DC5;}
-.tl3-marker.c-sky{border-color:rgba(139,176,214,0.30);}
-.tl3-marker.c-sky svg{stroke:#8BB0D6;}
-.tl3-marker.c-rosa{border-color:rgba(232,168,190,0.30);}
-.tl3-marker.c-rosa svg{stroke:#E8A8BE;}
-.tl3-card{
-  flex:1;padding:18px 22px;min-height:68px;
-  background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-radius:18px;position:relative;overflow:hidden;
-  border:1px solid rgba(176,141,197,0.10);
-  box-shadow:0 2px 14px rgba(139,107,163,0.04);
-  transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .5s ease;
+.itv3-item{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:30px 16px 4px;width:100%;
 }
-.tl3-card::after{
-  content:'';position:absolute;bottom:0;left:0;height:2.5px;width:0;
-  transition:width 1.2s cubic-bezier(.4,0,.2,1);
+.itv3-gem{
+  width:9px;height:9px;
+  background:linear-gradient(135deg,#D4B8E4 30%,#8B6BA3);
+  transform:rotate(45deg);border-radius:2px;
+  box-shadow:0 0 0 4px rgba(176,141,197,0.10),0 0 18px rgba(176,141,197,0.40);
+  margin-bottom:18px;flex-shrink:0;
 }
-.tl3-item.c-lila .tl3-card::after{background:linear-gradient(90deg,#B08DC5,#D4B8E4);}
-.tl3-item.c-sky .tl3-card::after{background:linear-gradient(90deg,#8BB0D6,#B8D4EA);}
-.tl3-item.c-rosa .tl3-card::after{background:linear-gradient(90deg,#E8A8BE,#F0C8D8);}
-.tl3-item.is-visible .tl3-card::after{width:100%;}
-.tl3-item.is-visible .tl3-marker{transform:scale(1.12);box-shadow:0 6px 28px rgba(139,107,163,0.16);}
-.tl3-item.is-visible .tl3-card{transform:translateX(3px);box-shadow:0 8px 32px rgba(139,107,163,0.10);}
-.tl3-time{
-  font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;
-  color:var(--dark);letter-spacing:3px;line-height:1;
+.itv3-time{
+  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
+  letter-spacing:8px;color:var(--dark);line-height:1;margin-bottom:6px;
+  text-indent:8px;/* compensate letter-spacing on last char */
 }
-.tl3-ev{
-  font-family:'Lato',sans-serif;font-size:10.5px;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--accent);margin-top:5px;line-height:1.4;
+.itv3-ev{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;color:rgba(58,45,80,0.55);
+  letter-spacing:3px;text-transform:uppercase;line-height:1.5;
+  text-indent:3px;
 }
+.itv3-item:last-child{padding-bottom:10px;}
 
 /* DRESS CODE V2 — Editorial oscuro */
 .dc2-wrap{
@@ -1005,67 +1010,44 @@ footer .fd{
   <section id="siti">
     <div class="eyebrow rv">Programa del D&iacute;a</div>
     <h2 class="sec-title rv">Itinerario</h2>
-    <div class="tl3">
-      <div class="tl3-connector"></div>
+    <div class="itv3">
+      <div class="itv3-track"></div>
+      <div class="itv3-glow" id="itvGlow"></div>
 
-      <div class="tl3-item c-lila">
-        <div class="tl3-marker c-lila">
-          <svg viewBox="0 0 24 24"><path d="M12 2v5M9 4.5h6M6 21V12l6-5 6 5v9"/></svg>
-        </div>
-        <div class="tl3-card">
-          <div class="tl3-time">17:00</div>
-          <div class="tl3-ev">Ceremonia Religiosa</div>
-        </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">17:00</div>
+        <div class="itv3-ev">Ceremonia Religiosa</div>
       </div>
 
-      <div class="tl3-item c-sky">
-        <div class="tl3-marker c-sky">
-          <svg viewBox="0 0 24 24"><path d="M8 2l4 9 4-9M12 11v7M8 21h8"/></svg>
-        </div>
-        <div class="tl3-card">
-          <div class="tl3-time">18:00</div>
-          <div class="tl3-ev">Recepci&oacute;n</div>
-        </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">18:00</div>
+        <div class="itv3-ev">Recepci&oacute;n</div>
       </div>
 
-      <div class="tl3-item c-rosa">
-        <div class="tl3-marker c-rosa">
-          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0H3zM7 16v5M12 14v7M17 16v5"/></svg>
-        </div>
-        <div class="tl3-card">
-          <div class="tl3-time">19:30</div>
-          <div class="tl3-ev">Cena</div>
-        </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">19:30</div>
+        <div class="itv3-ev">Cena</div>
       </div>
 
-      <div class="tl3-item c-lila">
-        <div class="tl3-marker c-lila">
-          <svg viewBox="0 0 24 24"><path d="M8 2l3 8H5M17 2l-3 8h6M10 10v4a2 2 0 0 0 4 0v-4M12 14v7"/></svg>
-        </div>
-        <div class="tl3-card">
-          <div class="tl3-time">20:30</div>
-          <div class="tl3-ev">Brindis</div>
-        </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">20:30</div>
+        <div class="itv3-ev">Brindis</div>
       </div>
 
-      <div class="tl3-item c-sky">
-        <div class="tl3-marker c-sky">
-          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="7" cy="18" r="3"/><circle cx="19" cy="16" r="3"/></svg>
-        </div>
-        <div class="tl3-card">
-          <div class="tl3-time">21:00</div>
-          <div class="tl3-ev">Vals</div>
-        </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">21:00</div>
+        <div class="itv3-ev">Vals</div>
       </div>
 
-      <div class="tl3-item c-rosa">
-        <div class="tl3-marker c-rosa">
-          <svg viewBox="0 0 24 24"><path d="M4 18h16M5 18v-4h14v4M8 14v-2h8v2M12 8v4M11 7.5a1 1 0 0 1 2 0"/></svg>
-        </div>
-        <div class="tl3-card">
-          <div class="tl3-time">21:30</div>
-          <div class="tl3-ev">Partida de Pastel</div>
-        </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">21:30</div>
+        <div class="itv3-ev">Partida de Pastel</div>
       </div>
 
     </div>
@@ -1496,24 +1478,38 @@ function initScrollReveal(){
   });
 }
 
-/* ITINERARIO V2 — Spring stagger + color activation */
+/* ITINERARIO V3 — Centered glow bead + stagger entrance */
 function initItinerary(){
-  var items=document.querySelectorAll('.tl3-item');
+  var glow=document.getElementById('itvGlow');
+  var section=document.getElementById('siti');
+  var items=document.querySelectorAll('.itv3-item');
+  if(!glow||!section)return;
+
+  /* Scroll-driven glow bead travels down the timeline */
+  ScrollTrigger.create({
+    trigger:section,
+    start:'top 58%',
+    end:'bottom 42%',
+    scrub:1.8,
+    onUpdate:function(self){
+      var track=section.querySelector('.itv3-track');
+      if(!track)return;
+      var h=track.offsetHeight-55;
+      glow.style.top=(self.progress*h)+'px';
+    }
+  });
+
+  /* Entrance: gem scales in, text fades up */
   items.forEach(function(item,i){
-    var marker=item.querySelector('.tl3-marker');
-    var card=item.querySelector('.tl3-card');
-    /* Entrance: marker scales in, card slides from right */
-    gsap.fromTo(marker,
-      {scale:0.3,opacity:0},
-      {scale:1,opacity:1,duration:0.8,ease:'back.out(2.5)',delay:i*0.12,
-       scrollTrigger:{trigger:item,start:'top 85%'}});
-    gsap.fromTo(card,
-      {x:40,opacity:0},
-      {x:0,opacity:1,duration:0.9,ease:'power3.out',delay:i*0.12+0.1,
-       scrollTrigger:{trigger:item,start:'top 85%'}});
-    /* Activation: add is-visible for accent line + glow */
-    ScrollTrigger.create({trigger:item,start:'top 75%',once:true,
-      onEnter:function(){item.classList.add('is-visible');}});
+    var gem=item.querySelector('.itv3-gem');
+    gsap.fromTo(gem,
+      {scale:0,opacity:0},
+      {scale:1,opacity:1,duration:0.6,ease:'back.out(2.8)',
+       scrollTrigger:{trigger:item,start:'top 86%',once:true}});
+    gsap.fromTo([item.querySelector('.itv3-time'),item.querySelector('.itv3-ev')],
+      {y:14,opacity:0},
+      {y:0,opacity:1,duration:0.8,ease:'power2.out',stagger:0.08,
+       scrollTrigger:{trigger:item,start:'top 86%',once:true}});
   });
 }
 
