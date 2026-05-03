@@ -509,21 +509,78 @@ section{padding:64px 26px;}
 }
 .corte-star svg{width:16px;height:16px;}
 
-/* GALERIA */
-#sgal{padding:36px 0 24px;}
-.gal-single{
-  display:flex;flex-direction:column;align-items:center;padding:0 26px;
+/* GALERIA V2 — Rueda de la Fortuna */
+#sgal{padding:40px 0 50px;overflow:visible;}
+.wgal-scene{
+  position:relative;height:310px;overflow:hidden;margin:0 auto;
 }
-.gal-label{
+/* Fade inferior — las fotos "emergen" desde abajo */
+.wgal-scene::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:110px;
+  background:linear-gradient(to top,var(--bg) 15%,rgba(251,245,255,0.5) 60%,transparent);
+  pointer-events:none;z-index:5;
+}
+/* Aro decorativo */
+.wgal-rim{
+  position:absolute;bottom:-50px;left:50%;
+  width:400px;height:400px;margin-left:-200px;
+  border-radius:50%;
+  border:1px solid rgba(176,141,197,0.11);
+  pointer-events:none;z-index:0;
+}
+.wgal-rim::before{
+  content:'';position:absolute;inset:18px;border-radius:50%;
+  border:1px dashed rgba(176,141,197,0.07);
+}
+/* Hub central */
+.wgal-hub{
+  position:absolute;
+  width:20px;height:20px;
+  bottom:-60px;left:50%;margin-left:-10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--champagne));
+  box-shadow:0 2px 12px rgba(139,107,163,0.32);
+  z-index:6;
+}
+/* Rueda — div de rotación (width/height=0, es solo un pivot) */
+.wgal-wheel{
+  position:absolute;
+  bottom:-50px;left:50%;
+  width:0;height:0;
+}
+/* Cada foto posicionada en el aro */
+.wgal-item{
+  position:absolute;
+  width:120px;height:158px;
+  margin-left:-60px;   /* −half_width */
+  margin-top:-258px;   /* −(radius_180 + half_height_78) */
+  transform-origin:60px 258px; /* (half_w, radius+half_h) = pivot = wheel center */
+  transform:rotate(calc(var(--i) * 60deg));
+}
+/* Rayo desde foto hasta centro */
+.wgal-spoke{
+  position:absolute;
+  top:158px;left:50%; /* desde borde inferior de la foto */
+  width:1.5px;height:100px; /* 258-158 = 100px hasta pivot */
+  background:linear-gradient(to bottom,rgba(176,141,197,0.20),transparent);
+  transform:translateX(-50%);
+}
+/* Tarjeta de foto */
+.wgal-card{
+  position:absolute;inset:0 0 0 0;height:158px;
+  border-radius:16px;overflow:hidden;
+  border:2.5px solid rgba(255,255,255,0.88);
+  box-shadow:0 8px 28px rgba(139,107,163,0.17),0 2px 6px rgba(0,0,0,0.07);
+  background:rgba(251,245,255,0.5);
+}
+.wgal-card img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+/* Scroll hint */
+.wgal-hint{
+  text-align:center;margin-top:18px;
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:11px;letter-spacing:5px;text-transform:uppercase;
-  color:var(--accent);text-align:center;opacity:.75;padding-bottom:20px;
-}
-.gal-single img{
-  width:88%;max-height:65dvh;
-  object-fit:cover;border-radius:24px;display:block;
-  box-shadow:0 20px 60px rgba(139,107,163,0.22),0 4px 18px rgba(0,0,0,0.08);
-  border:1px solid rgba(176,141,197,0.25);
+  font-size:12px;letter-spacing:3px;color:var(--accent);opacity:.55;
 }
 
 /* MESA DE REGALOS V2 — Centrada Ceremonial */
@@ -1118,12 +1175,66 @@ footer .fd{
     </div>
   </section>
 
-  <!-- GALERIA -->
+  <!-- GALERIA V2 — Rueda de la Fortuna -->
   <section id="sgal">
-    <div class="gal-single">
-      <div class="gal-label">Galer&iacute;a</div>
-      <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/480f2906-ca4b-47d2-af41-be4045f23f72/1777757390463-0.jpg" alt="Paola Yamelly" loading="lazy">
-    </div>
+    <div class="eyebrow rv">Momentos</div>
+    <h2 class="sec-title rv">Galer&iacute;a</h2>
+
+    <div class="wgal-scene">
+      <!-- Aro decorativo -->
+      <div class="wgal-rim"></div>
+      <!-- Hub central -->
+      <div class="wgal-hub"></div>
+
+      <!-- La rueda (pivot de rotación) -->
+      <div class="wgal-wheel" id="photoWheel">
+
+        <div class="wgal-item" style="--i:0">
+          <div class="wgal-spoke"></div>
+          <div class="wgal-card">
+            <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/480f2906-ca4b-47d2-af41-be4045f23f72/1777757390463-0.jpg" alt="Paola Yamelly" loading="lazy"/>
+          </div>
+        </div>
+
+        <div class="wgal-item" style="--i:1">
+          <div class="wgal-spoke"></div>
+          <div class="wgal-card">
+            <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/480f2906-ca4b-47d2-af41-be4045f23f72/1777757390463-0.jpg" alt="Paola Yamelly" loading="lazy"/>
+          </div>
+        </div>
+
+        <div class="wgal-item" style="--i:2">
+          <div class="wgal-spoke"></div>
+          <div class="wgal-card">
+            <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/480f2906-ca4b-47d2-af41-be4045f23f72/1777757390463-0.jpg" alt="Paola Yamelly" loading="lazy"/>
+          </div>
+        </div>
+
+        <div class="wgal-item" style="--i:3">
+          <div class="wgal-spoke"></div>
+          <div class="wgal-card">
+            <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/480f2906-ca4b-47d2-af41-be4045f23f72/1777757390463-0.jpg" alt="Paola Yamelly" loading="lazy"/>
+          </div>
+        </div>
+
+        <div class="wgal-item" style="--i:4">
+          <div class="wgal-spoke"></div>
+          <div class="wgal-card">
+            <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/480f2906-ca4b-47d2-af41-be4045f23f72/1777757390463-0.jpg" alt="Paola Yamelly" loading="lazy"/>
+          </div>
+        </div>
+
+        <div class="wgal-item" style="--i:5">
+          <div class="wgal-spoke"></div>
+          <div class="wgal-card">
+            <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/480f2906-ca4b-47d2-af41-be4045f23f72/1777757390463-0.jpg" alt="Paola Yamelly" loading="lazy"/>
+          </div>
+        </div>
+
+      </div><!-- /photoWheel -->
+    </div><!-- /wgal-scene -->
+
+    <div class="wgal-hint rv">↕ Scrollea para girar la rueda</div>
   </section>
 
   <div class="orn rv">
@@ -1297,6 +1408,7 @@ function launchPage(){
   initScrollReveal();
   initItinerary();
   initDressCode();
+  initWheelGallery();
 }
 
 /* SCROLL REVEAL */
@@ -1424,6 +1536,48 @@ document.getElementById('rsvpBtn').addEventListener('click',function(){
   var t='Hola! Soy '+n+'.\n'+a+'.\nInvitados: '+g+(m?'\nMensaje: '+m:'');
   window.open('https://wa.me/527772199125?text='+encodeURIComponent(t),'_blank');
 });
+
+/* GALERIA — Rueda de la Fortuna (scroll-driven) */
+function initWheelGallery(){
+  var wheel=document.getElementById('photoWheel');
+  if(!wheel)return;
+
+  /* Entrada: la rueda aparece con un pequeño impulso */
+  ScrollTrigger.create({trigger:'#sgal',start:'top 85%',once:true,onEnter:function(){
+    gsap.fromTo(wheel,{rotation:-15,opacity:0},{rotation:0,opacity:1,duration:1.4,ease:'power3.out'});
+    gsap.fromTo('.wgal-hint',{opacity:0,y:10},{opacity:1,y:0,duration:1.2,delay:0.8,ease:'power2.out'});
+  }});
+
+  /* Rotación vinculada al scroll — 300° = 5 posiciones en 6 fotos */
+  gsap.to(wheel,{
+    rotation:300,
+    ease:'none',
+    scrollTrigger:{
+      trigger:'#sgal',
+      start:'top 70%',
+      end:'bottom top',
+      scrub:2.5        /* suavidad del arrastre */
+    }
+  });
+
+  /* Sombra dinámica: la foto al centro (12 en punto) brilla más */
+  /* Se actualiza en el ticker para que coincida con la rotación actual */
+  gsap.ticker.add(function(){
+    var rot=gsap.getProperty(wheel,'rotation')||0;
+    var norm=((rot%360)+360)%360; /* normalizar a 0-360 */
+    document.querySelectorAll('.wgal-item').forEach(function(item,i){
+      var itemAngle=((i*60+norm)%360+360)%360;
+      /* Ángulo respecto al centro (12 en punto = 0°) */
+      var dist=Math.min(itemAngle,360-itemAngle); /* 0 = top, 180 = bottom */
+      var scale=dist<90?gsap.utils.mapRange(0,90,1.05,1,dist):1;
+      var shadow=dist<90?
+        '0 12px 36px rgba(139,107,163,0.28)':
+        '0 6px 20px rgba(139,107,163,0.14)';
+      item.querySelector('.wgal-card').style.boxShadow=shadow;
+      item.querySelector('.wgal-card').style.transform='scale('+scale+')';
+    });
+  });
+}
 
 /* MUSICA */
 var fab=document.getElementById('musicFab'),audio=document.getElementById('bgAudio');
