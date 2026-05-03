@@ -43,51 +43,37 @@ body{
 /* ENVELOPE SCREEN */
 #envelope-screen{
   position:fixed;inset:0;z-index:10000;overflow:hidden;cursor:pointer;
-  background:linear-gradient(160deg,#E8D5F0 0%,#D4B8E4 25%,#C4A0D8 50%,#B08DC5 75%,#9B7CB8 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:#f5eef8 url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/assets/sobre.png') center/contain no-repeat;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom:60px;
   opacity:0;
 }
-.env-monogram{
-  width:80px;height:80px;border-radius:50%;
-  border:2px solid rgba(255,255,255,0.5);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;
-  color:rgba(255,255,255,0.9);letter-spacing:4px;
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.12);
-}
-.env-name{
-  font-family:'Great Vibes',cursive;font-size:clamp(56px,18vw,80px);
-  color:#fff;line-height:1.1;text-align:center;
-  text-shadow:0 2px 20px rgba(0,0,0,0.15);
-}
-.env-sub{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:14px;letter-spacing:6px;text-transform:uppercase;
-  color:rgba(255,255,255,0.85);
-}
 .envelope-hint{
-  position:absolute;bottom:52px;left:50%;transform:translateX(-50%);
   font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:8px;text-transform:uppercase;
-  color:rgba(255,255,255,0.92);opacity:0;cursor:pointer;white-space:nowrap;z-index:10;
-  padding:16px 44px;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.25);
+  color:rgba(80,50,110,0.88);opacity:0;cursor:pointer;white-space:nowrap;z-index:10;
+  padding:14px 40px;
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(176,141,197,0.35);
   border-radius:40px;
-  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
-  box-shadow:0 8px 32px rgba(0,0,0,0.12);
-  overflow:hidden;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 6px 28px rgba(139,107,163,0.15);
+  overflow:hidden;position:relative;
   animation:hintFloat 3.2s ease-in-out infinite;
 }
 .envelope-hint::before{
   content:'';position:absolute;top:0;left:-130%;
   width:75%;height:100%;
-  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.22) 50%,rgba(255,255,255,0.14) 56%,transparent 72%);
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0.3) 56%,transparent 72%);
   animation:shimmerSweep 2.8s ease-in-out infinite;
   pointer-events:none;
 }
 @keyframes shimmerSweep{0%{left:-130%;}55%{left:200%;}100%{left:200%;}}
-@keyframes hintFloat{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-5px);}}
+@keyframes hintFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+/* VIDEO apertura */
+#env-video{
+  position:fixed;inset:0;z-index:10001;width:100%;height:100%;
+  object-fit:cover;background:#f5eef8;display:none;
+}
 #env-flash{position:fixed;inset:0;background:var(--bg);z-index:9999;opacity:0;pointer-events:none;}
 
 /* LOADER */
@@ -818,11 +804,11 @@ footer .fd{
 
 <!-- ENVELOPE -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir tu invitacion">
-  <div class="env-monogram">PS</div>
-  <div class="env-name">Paola Yamelly</div>
-  <div class="env-sub">Mis XV A&ntilde;os &middot; 13 Junio 2026</div>
   <p class="envelope-hint" id="env-hint">Toca para abrir</p>
 </div>
+<video id="env-video" playsinline webkit-playsinline preload="none">
+  <source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/assets/sobre-apertura.mp4" type="video/mp4">
+</video>
 <div id="env-flash"></div>
 
 <!-- LOADER -->
@@ -1458,31 +1444,53 @@ gsap.registerPlugin(ScrollTrigger);
 /* ENVELOPE */
 (function(){
   var envScreen=document.getElementById('envelope-screen');
+  var envVideo=document.getElementById('env-video');
   var envFlash=document.getElementById('env-flash');
   var hint=document.getElementById('env-hint');
   var opened=false;
 
+  /* Entrada del sobre estático */
   gsap.timeline()
-    .to(envScreen,{opacity:1,duration:1.2,ease:'power2.out',delay:0.3})
-    .to(hint,{opacity:1,duration:0.9,ease:'power2.out'},'-=0.5');
+    .to(envScreen,{opacity:1,duration:1.0,ease:'power2.out',delay:0.3})
+    .to(hint,{opacity:1,duration:0.9,ease:'power2.out'},'-=0.4');
 
   function revealInvitation(){
-    envScreen.style.display='none';
     document.querySelector('.wrap').style.visibility='visible';
     launchPage();
-    gsap.to(envFlash,{opacity:0,duration:1.2,ease:'power2.out',
+    gsap.to(envFlash,{opacity:0,duration:1.0,ease:'power2.out',
       onComplete:function(){envFlash.style.display='none';}});
   }
+
   function openEnvelope(){
     if(opened)return; opened=true;
-    gsap.to(hint,{opacity:0,duration:0.2});
-    gsap.to(envScreen,{opacity:0,duration:0.8,ease:'power2.inOut',delay:0.2,
+    /* Ocultar hint y pantalla del sobre */
+    gsap.to(hint,{opacity:0,duration:0.15});
+    gsap.to(envScreen,{opacity:0,duration:0.35,ease:'power2.in',
       onComplete:function(){
-        gsap.set(envFlash,{opacity:1});
-        revealInvitation();
+        envScreen.style.display='none';
+        /* Mostrar y reproducir video de apertura */
+        envVideo.style.display='block';
+        envVideo.play().catch(function(){
+          /* Si el video falla, ir directo a la invitación */
+          envVideo.style.display='none';
+          gsap.set(envFlash,{opacity:1});
+          revealInvitation();
+        });
       }
     });
   }
+
+  /* Cuando termina el video → revelar invitación */
+  envVideo.addEventListener('ended',function(){
+    gsap.set(envFlash,{opacity:1});
+    gsap.to(envVideo,{opacity:0,duration:0.4,ease:'power2.in',
+      onComplete:function(){
+        envVideo.style.display='none';
+        revealInvitation();
+      }
+    });
+  });
+
   envScreen.addEventListener('click',openEnvelope);
   envScreen.addEventListener('touchstart',function(e){e.preventDefault();openEnvelope();},{passive:false});
 }());
