@@ -1682,6 +1682,11 @@ function copyAccount(){
       return;
     }
     clearErr();
+
+    var lista=nombres.map(function(n,i){return (i+1)+'. '+n;}).join('\n');
+    var msg='Hola! Confirmo mi asistencia a los XV de Paola Yamelly 🌸\n\nAsistentes:\n'+lista+'\n\nNos vemos pronto!';
+    window.location.href='https://wa.me/527772199125?text='+encodeURIComponent(msg);
+
     submitBtn.disabled=true;
     submitBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9" stroke-dasharray="28" stroke-dashoffset="0"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.9s" repeatCount="indefinite"/></circle></svg> Enviando…';
 
@@ -1696,9 +1701,6 @@ function copyAccount(){
       body:JSON.stringify({pases:pases,nombres:nombres})
     }).then(function(res){
       if(!res.ok)return res.text().then(function(t){throw new Error(t);});
-      var lista=nombres.map(function(n,i){return (i+1)+'. '+n;}).join('\n');
-      var msg='Hola! Confirmo mi asistencia a los XV de Paola Yamelly 🌸\n\nAsistentes:\n'+lista+'\n\nNos vemos pronto!';
-      window.open('https://wa.me/527772199125?text='+encodeURIComponent(msg),'_blank');
       showSuccess();
     }).catch(function(err){
       submitBtn.disabled=false;
