@@ -1696,6 +1696,9 @@ function copyAccount(){
       body:JSON.stringify({pases:pases,nombres:nombres})
     }).then(function(res){
       if(!res.ok)return res.text().then(function(t){throw new Error(t);});
+      var lista=nombres.map(function(n,i){return (i+1)+'. '+n;}).join('\n');
+      var msg='Hola! Confirmo mi asistencia a los XV de Paola Yamelly 🌸\n\nAsistentes:\n'+lista+'\n\nNos vemos pronto!';
+      window.open('https://wa.me/527772199125?text='+encodeURIComponent(msg),'_blank');
       showSuccess();
     }).catch(function(err){
       submitBtn.disabled=false;
